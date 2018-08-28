@@ -20,22 +20,13 @@ DavinciSkillsCommunicationsManager::DavinciSkillsCommunicationsManager(ros::Node
   spinner_.start();
 
 
-//  runActionServerThread();
-
-
-
-  // TODO should be wrapped into functions instead of calling like this? And the threads are not necessarily class members.
-  boost::thread thread_information_manager_(&DavinciSkillsCommunicationsManager::manageInfromation, this);
-//  boost::thread thread_active_skill_(&DavinciSkillsCommunicationsManager::runActiveSkill, this);
-  boost::thread thread_robot_controller_(&DavinciSkillsCommunicationsManager::runRobotController, this);
-//  boost::thread thread_functional_test_(&DavinciSkillsCommunicationsManager::runTrialFunctions, this);
-
-
-  boost::thread thread_action_server_(&DavinciSkillsCommunicationsManager::runActionServer, this);
-  ROS_WARN("RN DEBUG 2");
-
+  startActionServer();
 
   ros::waitForShutdown();
+
+
+
+
 }
 
 
@@ -116,18 +107,10 @@ void DavinciSkillsCommunicationsManager::manageInfromation() {
 }
 
 
-void DavinciSkillsCommunicationsManager::runActionServer() {
+void DavinciSkillsCommunicationsManager::startActionServer() {
   ROS_INFO("Commnucations Action Server Stand By.");
   action_server_.start();
   ROS_INFO("Commnucations Action Server Ready.");
-}
-
-void DavinciSkillsCommunicationsManager::runActionServerThread() {
-//  boost::thread thread_action_server_(&DavinciSkillsCommunicationsManager::runActionServer, this);
-//  thread_action_server_.detach();
-//
-//  ROS_WARN("RN DEBUG");
-
 }
 
 
@@ -150,8 +133,8 @@ void DavinciSkillsCommunicationsManager::actionServerExecuteCallback(const cwru_
 
   ROS_INFO("New Goal Received!");
 
-
-
+  action_result_.success = true;
+  action_server_.setSucceeded(action_result_);
 
 
 }

@@ -110,6 +110,14 @@ target_link_libraries(cwru_davinci_skills_communications_node
         ${catkin_LIBRARIES}
         ${Boost_LIBRARIES})
 
+add_executable(action_client_test_node src/action_client_test_node.cpp)
+target_link_libraries(action_client_test_node
+        DavinciSkillsCommunicationsManager
+        DavinciSkillsCommunicationsActionClient
+        DavinciSkillsAuxiliary
+        ${catkin_LIBRARIES}
+        ${Boost_LIBRARIES})
+
 
 #############
 ## Testing ##

@@ -57,12 +57,7 @@ class DavinciSkillsCommunicationsManager {
   void manageInfromation();
   void runInformationManagementThread();
 
-  /*
-   * A function for multi-threading.
-   * Starts and runs the action server.
-   */
-  void runActionServer();
-  void runActionServerThread();
+  void startActionServer();
 
   void runRobotController();
 
@@ -89,14 +84,12 @@ class DavinciSkillsCommunicationsManager {
   bool isPreempt_;
   bool goalComplete_;
 
+  /* Kinematics */
+  davinci_kinematics::Inverse dvrk_inverse_;
 
-  // TODO may not be used as members.
-  /* Use 5 threads */
-  boost::thread thread_action_server_;
+
+  /* Multi-threading */
   boost::thread thread_information_manager_;
-  boost::thread thread_active_skill_; // TODO this should be not started here! It should be called in the as after an action recieved.
-  boost::thread thread_robot_controller_; // TODO this should be not started here.
-//  boost::thread thread_functional_test_;
   ros::AsyncSpinner spinner_;
 
   BasicEnvTransforms basic_env_transforms_;

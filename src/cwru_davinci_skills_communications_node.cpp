@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "cwru_davinci_skills_communications_node");
   ros::NodeHandle nh;
 
-  DavinciSkillsCommunicationsManager davinci_skills_communications_manager(nh, "cwru_davinci_skills_communications_node", true);
+  DavinciSkillsCommunicationsManager davinci_skills_communications_manager(nh, "cwru_davinci_skills_communications_node", false);
 
 //  while (ros::ok())
 //  {
