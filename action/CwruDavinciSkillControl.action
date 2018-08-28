@@ -1,0 +1,41 @@
+# Goal Definition
+bool request_skill_planning
+bool request_execution
+bool clear_existing_planning_queue
+bool clear_exisitng_execution_queue
+
+int8 arm_index
+int32 skill_type
+
+# Needle Driving Input/Specification
+geometry_msgs/PointStamped entry_point                    # needle entry point position
+geometry_msgs/PointStamped exit_point                     # needle exit point position
+geometry_msgs/TransformStamped grasp_transform            # grasp transform btw gripper and needle
+
+
+# Skill Types
+int8 TEST_DEMO_ONE                                        = 91   
+int8 TEST_DEMO_TWO                                        = 92                                                                        
+int8 NEEDLE_DRIVING                                       = 11
+int8 THREAD_PULLING                                       = 12
+int8 KNOT_TYING                                           = 13
+
+
+
+
+---
+# Result Definition
+bool success
+
+
+
+
+
+
+---
+# Feedback Definition
+
+
+
+
+
