@@ -22,6 +22,9 @@ DavinciSkillsCommunicationsManager::DavinciSkillsCommunicationsManager(ros::Node
 
   startActionServer();
 
+
+
+
   ros::waitForShutdown();
 
 
@@ -133,8 +136,32 @@ void DavinciSkillsCommunicationsManager::actionServerExecuteCallback(const cwru_
 
   ROS_INFO("New Goal Received!");
 
-  action_result_.success = true;
-  action_server_.setSucceeded(action_result_);
+  int i(0);
+  for (i = 0; i < 10; i++) {
+
+    // check that preempt has not been requested by the client
+//    if (action_server_.isPreemptRequested() || !ros::ok())
+//    {
+//      ROS_WARN("Preempted");
+//      // set the action state to preempted
+//      action_server_.setPreempted();
+//      action_result_.success = false;
+//      break;
+//    }
+
+    std::cout << "CHECKPOINT#" << i << std::endl;
+    ros::Duration(1).sleep();
+
+  }
+
+  if (i==10) {
+    action_result_.success = true;
+    action_server_.setSucceeded(action_result_);
+  } else {
+    action_result_.success = false;
+  }
+
+
 
 
 }

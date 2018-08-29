@@ -64,12 +64,18 @@ void DavinciSkillsCommunicationsActionClient::testActionServer() {
   goal.request_skill_planning = true;
 
   sendGoal(goal);
-  finished_before_timeout = action_client_.waitForResult(ros::Duration(5));
-
-  if (!finished_before_timeout) {
-    ROS_WARN("Timeout! Server did not respond.");
-  }
+//  finished_before_timeout = action_client_.waitForResult(ros::Duration(5));
+//
+//  if (!finished_before_timeout) {
+//    ROS_WARN("Timeout! Server did not respond.");
+//  }
 
 }
 
 
+void DavinciSkillsCommunicationsActionClient::testCancelGoals() {
+
+  ROS_WARN("Sending cancel all goals cmd.");
+  action_client_.cancelAllGoals();
+
+}

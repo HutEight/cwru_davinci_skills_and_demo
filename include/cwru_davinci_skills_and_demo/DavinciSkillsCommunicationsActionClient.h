@@ -18,6 +18,8 @@ class DavinciSkillsCommunicationsActionClient {
 
   void testActionServer();
 
+  void testCancelGoals();
+
 
  private:
 
