@@ -119,6 +119,25 @@ target_link_libraries(action_client_test_node
         ${Boost_LIBRARIES})
 
 
+## From the test folder
+
+add_executable(controller_test_main test/controller_test_main.cpp)
+target_link_libraries(controller_test_main
+        DavinciSkillsCommunicationsManager
+        DavinciSkillsCommunicationsActionClient
+        DavinciSkillsAuxiliary
+        ${catkin_LIBRARIES}
+        ${Boost_LIBRARIES})
+
+add_executable(dynamic_trajectory_switch_main test/dynamic_trajectory_switch_main.cpp)
+target_link_libraries(dynamic_trajectory_switch_main
+        DavinciSkillsCommunicationsManager
+        DavinciSkillsCommunicationsActionClient
+        DavinciSkillsAuxiliary
+        ${catkin_LIBRARIES}
+        ${Boost_LIBRARIES})
+
+
 #############
 ## Testing ##
 #############
