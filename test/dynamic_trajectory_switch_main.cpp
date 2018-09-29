@@ -49,7 +49,7 @@ void addJointTwoOffset(psm_controller &psm) {
   double next_q1;
   double time_from_start(0);
 
-  double q2(0.1);
+  double q2(0.0); /* You can set another number to make it more obvious. */
   double q3(0.15);
 
   next_q1 = current_q1_ + kPace;
@@ -116,6 +116,9 @@ void runPlanningThread(psm_controller &psm) {
 
 
 int main(int argc, char **argv) {
+
+  std::cout << "This is a test programme to examine how the controller handles"
+               " a newly received trajectory while executing a previous one." << std::endl;
 
   ros::init(argc, argv, "dynamic_trajectory_swtich_main");
   ros::NodeHandle nh;
